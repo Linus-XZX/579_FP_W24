@@ -1,2 +1,5 @@
-# 579_FP_W24
-Final Project, SI 579, Winter 2024
+# SI 579 Final Project
+
+Yutong Ren, Boyan Wu, Linus Xu
+
+Winter 2024
