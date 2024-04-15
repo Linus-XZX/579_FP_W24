@@ -3,6 +3,7 @@ import './App.css';
 import {useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Dropdown from 'react-bootstrap/Dropdown';
+import Button from 'react-bootstrap/Button'
 import apiList from './components/constants';
 
 const App = () => {
@@ -13,7 +14,7 @@ const App = () => {
     setIsLoading(true);
     fetch(site)
       .then((res) => res.json())
-      .then((json) => json[apiList[api]])
+      .then((json) => json[apiList[site]])
       .then((img) => setPic(<img src={img} alt={`Random meme from ${name}`} />))
       .then(() => setIsLoading(false));
   }
@@ -29,7 +30,12 @@ const App = () => {
           {Object.keys(apiList).map((api, index) => <Dropdown.Item key={index} onClick={() => setApi(api)}>{api}</Dropdown.Item>)}
         </Dropdown.Menu>
       </Dropdown>
-      <button disabled={api === ''} onClick={() => getPic(api)}>{api === '' ? 'Select a site to get started' : `Get random comic from ${api}`}</button>
+      <Button disabled={api === ''} onClick={() => getPic(api)}>{api === '' ? 'Select a site to get started' : `Get random comic from ${api}`}</Button>
+      <Button onClick={() =>{
+        const newApi = Object.keys(apiList)[Math.floor((Math.random() * Object.keys(apiList).length))]
+        setApi(newApi);
+        getPic(newApi);
+      }}>Feeling lucky?</Button>
       <p>
         SI579 Final Project: Meme search engine
       </p>
