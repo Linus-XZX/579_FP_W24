@@ -1,54 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
-import {useState} from "react";
+import React, { useState } from 'react';
+import Sidebar from './Sidebar';
+import SearchEngine from './SearchEngine';
+import Gallery from './Gallery';
+import DeleteMeme from './DeleteMeme';
+import FavoritesGallery from './FavoritesGallery'; // Adjust the path as necessary
+import { Container, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Dropdown from 'react-bootstrap/Dropdown';
-import Button from 'react-bootstrap/Button'
-import apiList from './components/constants';
+
+
 
 const App = () => {
-  const [pic, setPic] = useState(<img src={logo} className="App-logo" alt="logo" />);
-  const [isLoading, setIsLoading] = useState(false);
-  const [api, setApi] = useState('');
-  const getPic = (site, name = site) => {
-    setIsLoading(true);
-    fetch(site)
-      .then((res) => res.json())
-      .then((json) => json[apiList[site]])
-      .then((img) => setPic(<img src={img} alt={`Random meme from ${name}`} />))
-      .then(() => setIsLoading(false));
-  }
-  return (
-    <div className="App App-header">
-      {isLoading ? "Loading..." : pic}
-      <Dropdown>
-        <Dropdown.Toggle variant="success" id="dropdown-basic">
-          {api === '' ? 'Site List' : api}
-        </Dropdown.Toggle>
+  const [activePage, setActivePage] = useState('searchEngine');
 
-        <Dropdown.Menu>
-          {Object.keys(apiList).map((api, index) => <Dropdown.Item key={index} onClick={() => setApi(api)}>{api}</Dropdown.Item>)}
-        </Dropdown.Menu>
-      </Dropdown>
-      <Button disabled={api === ''} onClick={() => getPic(api)}>{api === '' ? 'Select a site to get started' : `Get random comic from ${api}`}</Button>
-      <Button onClick={() =>{
-        const newApi = Object.keys(apiList)[Math.floor((Math.random() * Object.keys(apiList).length))]
-        setApi(newApi);
-        getPic(newApi);
-      }}>Feeling lucky?</Button>
-      <p>
-        SI579 Final Project: Meme search engine
-      </p>
-      <a
-        className="App-link"
-        href="https://github.com/Linus-XZX/579_fp_w24"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Link to source code repo
-      </a>
-    </div>
+  const handleSelect = (selectedKey) => {
+    setActivePage(selectedKey);
+  };
+
+  return (
+    <Container fluid>
+      <Row>
+        <Col xs={2} id="sidebar-wrapper">      
+          <Sidebar onSelect={handleSelect} />
+        </Col>
+        <Col xs={10} id="page-content-wrapper">
+          {activePage === 'searchEngine' && <SearchEngine />}
+          {activePage === 'funnyGallery' && <Gallery activePage={activePage} />}
+          {activePage === 'favorGallery' && <Gallery activePage={activePage} />}
+          {activePage === 'myFavorite' && <FavoritesGallery />}
+          {activePage === 'deleteMeme' && <DeleteMeme />}
+        </Col>
+      </Row>
+    </Container>
   );
-}
+};
 
 export default App;
