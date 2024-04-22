@@ -1,0 +1,126 @@
+/* Styles for the main container of the SearchEngine component */
+.App-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Align content to the top */
+  padding-top: 2rem; /* Add some padding at the top */
+  background-color: #282c34; /* Maintain the existing dark background */
+  color: white;
+  min-height: 100vh; /* Full viewport height */
+  text-align: center;
+}
+
+/* Title styling */
+.App-header p {
+  font-size: 1.25rem;
+  margin-top: 0;
+  margin-bottom: 2rem; /* Space after the title */
+  font-weight: bold;
+  color: #61dafb; /* Bright color for visibility against the dark background */
+}
+
+/* Button container styling */
+.App-header .button-container {
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  align-items: center; /* Center buttons */
+  width: 100%;
+}
+
+.App-header .button-container > .btn-primary {
+  width: 80%; /* Adjust the width of the buttons */
+  margin: 0.5rem 0; /* Add space between buttons */
+}
+
+/* Adjustments for dropdown */
+.App-header .dropdown {
+  width: 80%; /* Set width to match buttons */
+  margin-bottom: 1rem; /* Space below the dropdown */
+}
+
+/* Styling adjustments for checkboxes and grading */
+.App-header .form-check,
+.App-header .Grading {
+  width: 80%; /* Set width to match other inline elements */
+  margin: 0.5rem 0; /* Consistent margin for spacing */
+}
+
+/* Load animation and image styling */
+.App-header .App-logo {
+  width: 15rem; /* Adjust logo size as needed */
+  height: auto; /* Keep the aspect ratio */
+  margin-bottom: 1rem;
+}
+/* Add spacing between buttons */
+.btn-primary {
+  margin-bottom: 1rem; /* Adds space below each button */
+}
+
+/* If you need to target only the buttons in a specific container, you could do something like this: */
+#page-content-wrapper .btn-primary {
+  margin-bottom: 1rem; /* Adjust as needed */
+}
+
+/* If the buttons are direct children of a specific container, you can use the child combinator > for direct descendant */
+#page-content-wrapper > .btn-primary {
+  margin-bottom: 1rem; /* Adjust as needed */
+}
+/* Styling for the save image and lucky buttons */
+.App-header .SearchEngine-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  width: 80%; /* Set width to match other buttons */
+  margin-bottom: 1rem; /* Add space below each button */
+}
+
+.App-header .SearchEngine-button:hover {
+  background-color: #0056b3;
+}
+
+/* Existing input styles */
+.SearchEngine-input {
+  /* ... */
+}
+
+/* Media query adjustments for responsiveness */
+@media (max-width: 768px) {
+  .App-header .button-container > .btn-primary,
+  .App-header .dropdown,
+  .App-header .form-check,
+  .App-header .Grading {
+    width: 90%; /* Full width on smaller screens */
+  }
+}
+
+/* Additional styles for aligning the checkbox with its label */
+.favorite-checkbox {
+  margin: 10px 0; /* Adjust the margin as necessary */
+}
+
+/* If you need additional space between the label and the checkbox */
+.favorite-checkbox .form-label {
+  margin-right: 10px; /* Adds some space between the label and the checkbox */
+}
+
+/* Existing styles */
+.App-logo, .fetched-image {
+  height: auto; /* Maintain aspect ratio */
+  max-width: 100%; /* Make image width not exceed the container */
+  max-height: 500px; /* Adjust this value based on your layout needs */
+  margin-bottom: 1rem;
+}
+
+/* You can apply this style directly to the image element */
+.fetched-image {
+  max-width: 100%; /* Limits the width to the parent container's width */
+  max-height: 80vh; /* Limits the image height to 80% of the viewport height */
+  object-fit: contain; /* Ensures the image is scaled properly */
+}
+
+
+/* Add any additional styling as needed */

@@ -1,0 +1,34 @@
+.Gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Create as many columns as can fit */
+  gap: 15px; /* Space between grid items */
+  padding: 20px;
+  justify-content: center; /* Center items horizontally */
+}
+
+.Gallery-item {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-align: center;
+  transition: transform 0.3s ease; 
+}
+
+.Gallery-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.Gallery-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.Gallery-image:hover {
+  opacity: 0.8;
+  cursor: pointer; 
+}
+
+.container {
+  background-color: #282c34;
+}

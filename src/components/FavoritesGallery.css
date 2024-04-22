@@ -1,0 +1,39 @@
+/* Set the background color for the whole page */
+html, body {
+  height: 100%; /* Make sure the html and body are at least the height of the viewport */
+  margin: 0;
+  padding: 0;
+  background-color: #282c34; /* Your chosen background color */
+}
+
+/* Apply styles to the container */
+.container {
+  min-height: 100%;
+  /* Your other styles for the container */
+}
+
+/* Card styles */
+.Card {
+  transition: transform 0.3s ease; 
+  z-index: 0; 
+  width: '18rem';
+  margin: '10px';
+  display: 'inline-block'
+}
+
+.Card:hover {
+  transform: scale(1.1); /* Enlarge the card on hover */
+  z-index: 1; /* Raise the z-index on hover to ensure the card is above other content */
+}
+
+/* Image styles inside the card */
+.FavoritesGallery-image {
+  width: 100%; /* Make sure the image takes up the full width of the card */
+  display: block;
+  /* No transform here */
+}
+
+
+.container {
+  background-color: #282c34; 
+}

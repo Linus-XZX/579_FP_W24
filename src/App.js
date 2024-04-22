@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import Sidebar from './Sidebar';
-import SearchEngine from './SearchEngine';
-import Gallery from './Gallery';
-import DeleteMeme from './DeleteMeme';
-import FavoritesGallery from './FavoritesGallery'; // Adjust the path as necessary
+import Sidebar from './components/Sidebar';
+import SearchEngine from './components/SearchEngine';
+import Gallery from './components/Gallery';
+import DeleteMeme from './components/DeleteMeme';
+import FavoritesGallery from './components/FavoritesGallery'; // Adjust the path as necessary
 import { Container, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import './App.css';
 
 
 const App = () => {

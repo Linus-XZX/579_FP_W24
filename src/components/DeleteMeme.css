@@ -1,0 +1,12 @@
+.container_delete {
+    padding-top: 60px; /* Adjust this value to create the desired amount of space */
+    background-color: #282c34;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh; /* Use viewport height to make sure the container fills the height of the screen */
+    margin: 0 auto;
+    padding-bottom: 20px;
+  }
+  

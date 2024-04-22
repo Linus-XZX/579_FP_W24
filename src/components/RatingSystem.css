@@ -1,0 +1,23 @@
+.RatingSystem-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .Rating-dropdown {
+    margin-bottom: 20px;
+  }
+  
+  .Meme-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+  }
+  
+  .Meme-rating {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
