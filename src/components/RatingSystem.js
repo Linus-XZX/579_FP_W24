@@ -1,1 +1,0 @@
-import './RatingSystem.css';
