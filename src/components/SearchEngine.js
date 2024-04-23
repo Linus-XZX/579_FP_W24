@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './SearchEngine.css';
 import '../App.css';
-import { Dropdown, Button, Form } from 'react-bootstrap';
+import { Dropdown, Button, Form, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import apiList from '../components/constants';
+import apiList, {initCustomUrl, initCustomKey} from '../components/constants';
 import logo from '../logo.svg';
 import Grading from '../components/Grading'; // Reusing Grading component for both grades
 
@@ -15,18 +15,43 @@ const SearchEngine = () => {
   const [funnyGrade, setFunnyGrade] = useState(5); // State to store the funny grade value
   const [favorGrade, setFavorGrade] = useState(5); // State to store the favor grade value
   const [addToFavorite, setAddToFavorite] = useState(false); // State for "Add to favorite" checkbox
+  const [showModal, setShowModal] = useState(false); // State for modal 'Custom API' window
+  const [customUrl, setCustomUrl] = useState(initCustomUrl);
+  const [customKey, setCustomKey] = useState(initCustomKey);
 
-  const getPic = (site, name = site) => {
+  const getPic = (site, key = apiList[site]) => {
     setIsLoading(true);
     fetch(site)
-      .then((res) => res.json())
-      .then((json) => json[apiList[site]])
+      .then((res) => {
+        if(res.ok) {
+          return res.json();
+        }else{
+          setPic('Failed: Invalid response');
+          return Promise.reject('Failed: Invalid response');
+        }
+      })
+      .then((json) => {
+        if(json[key]) {
+          return json[key];
+        }else{
+          setPic('Failed: Incorrect key');
+          return Promise.reject('Failed: Incorrect key');
+        }
+      })
       .then((img) => {
         // Apply the "fetched-image" class to this image
-        setPic(<img src={img} alt={`Random meme from ${name}`} className="fetched-image" />);
+        setPic(<img src={img} alt={`Random meme from ${site}`} className="fetched-image" />);
         setImageUrl(img);
+        setApi(site);
       })
-      .then(() => setIsLoading(false));
+      .then(() => setIsLoading(false))
+      .catch((error) => {
+        setPic(typeof(error) === 'string' ? error : 'Fetch failed. Check console for details.');
+        if(typeof(error) !== 'string') {
+          console.log(error);
+        }
+        setIsLoading(false);
+      });
   };
 
   const getImageRegistry = () => {
@@ -106,8 +131,36 @@ const SearchEngine = () => {
               {api}
             </Dropdown.Item>
           ))}
+          <Dropdown.Item key={-1} onClick={() => {
+            setShowModal(true);
+            setIsLoading(true);
+          }}>Custom...</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
+      <Modal show={showModal} onShow={() => {
+        setCustomUrl(initCustomUrl);
+        setCustomKey(initCustomKey);
+      }}>
+        <Modal.Header>
+          <Modal.Title>Set Custom API</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group controlId='formUrl'>
+              <Form.Label>Full URL to API</Form.Label>
+              <Form.Control type='url' onChange={(e) => setCustomUrl(e.target.value)}placeholder={initCustomUrl} />
+            </Form.Group>
+            <Form.Group controlId='formKey'>
+              <Form.Label>JSON key to image link</Form.Label>
+              <Form.Control type='text' onChange={(e) => setCustomKey(e.target.value)} placeholder={initCustomKey} />
+            </Form.Group>
+            <Button variant='primary' onClick={() => {
+              setShowModal(false);
+              getPic(customUrl, customKey);
+            }}>Submit</Button>
+          </Form>
+        </Modal.Body>
+      </Modal>
       <Button disabled={api === ''} onClick={() => getPic(api)}>
         {api === '' ? 'Select a site to get started' : `Get random comic from ${api}`}
       </Button>

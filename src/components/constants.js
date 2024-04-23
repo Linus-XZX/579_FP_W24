@@ -5,4 +5,8 @@ const apiList = {
     'https://dog.ceo/api/breeds/image/random': 'message'
 };
 
+const initCustomUrl = 'https://www.example.com/api';
+const initCustomKey = 'image';
+
 export default apiList;
+export {initCustomUrl, initCustomKey};
