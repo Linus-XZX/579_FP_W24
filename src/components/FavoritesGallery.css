@@ -1,15 +1,15 @@
 /* Set the background color for the whole page */
 html, body {
-  height: 100%; /* Make sure the html and body are at least the height of the viewport */
+  height: 100%; 
   margin: 0;
   padding: 0;
-  background-color: #282c34; /* Your chosen background color */
+  background-color: #282c34; 
 }
 
 /* Apply styles to the container */
 .container {
   min-height: 100%;
-  /* Your other styles for the container */
+  
 }
 
 /* Card styles */
@@ -28,7 +28,7 @@ html, body {
 
 /* Image styles inside the card */
 .FavoritesGallery-image {
-  width: 100%; /* Make sure the image takes up the full width of the card */
+  width: 100%; 
   display: block;
   /* No transform here */
 }
