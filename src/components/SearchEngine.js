@@ -47,6 +47,7 @@ const SearchEngine = () => {
       .then(() => setIsLoading(false))
       .catch((error) => {
         setPic(typeof(error) === 'string' ? error : 'Fetch failed. Check console for details.');
+        setImageUrl('');
         if(typeof(error) !== 'string') {
           console.log(error);
         }
@@ -146,18 +147,18 @@ const SearchEngine = () => {
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group controlId='formUrl'>
+            <Form.Group className='mb-3' controlId='formUrl'>
               <Form.Label>Full URL to API</Form.Label>
               <Form.Control type='url' onChange={(e) => setCustomUrl(e.target.value)}placeholder={initCustomUrl} />
             </Form.Group>
-            <Form.Group controlId='formKey'>
+            <Form.Group className='mb-3' controlId='formKey'>
               <Form.Label>JSON key to image link</Form.Label>
               <Form.Control type='text' onChange={(e) => setCustomKey(e.target.value)} placeholder={initCustomKey} />
             </Form.Group>
             <Button variant='primary' onClick={() => {
               setShowModal(false);
               getPic(customUrl, customKey);
-            }}>Submit</Button>
+            }}>Load Image</Button>
           </Form>
         </Modal.Body>
       </Modal>
