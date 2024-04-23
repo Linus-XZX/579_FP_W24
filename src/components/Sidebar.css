@@ -1,4 +1,4 @@
-/* Sidebar overall styles */
+
 .Sidebar {
   background-color: #454545; /* Light gray background for the whole sidebar */
   padding: 20px;
@@ -15,11 +15,11 @@
 .Sidebar-link {
   color: #1a1a1a; /* Dark gray color for text */
   text-decoration: none; /* No underline */
-  display: block; /* Make the link fill the container for a larger click area */
+  display: block; 
   padding: 10px; /* Padding for the link for spacing and larger click area */
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; /* Smooth transition for hover effect */
   border-radius: 4px; /* Match the item's border radius */
-  background-color: #007bff; /* Default background color */
+  background-color: #007bff; 
 }
 
 /* Hover effect for links */
