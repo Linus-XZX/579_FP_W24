@@ -1,5 +1,5 @@
 .container_delete {
-    padding-top: 60px; /* Adjust this value to create the desired amount of space */
+    padding-top: 60px; 
     background-color: #282c34;
     display: flex;
     flex-direction: column;
