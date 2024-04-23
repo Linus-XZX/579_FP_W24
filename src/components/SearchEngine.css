@@ -48,7 +48,7 @@
 
 /* Load animation and image styling */
 .App-header .App-logo {
-  width: 15rem; /* Adjust logo size as needed */
+  width: 15rem; 
   height: auto; /* Keep the aspect ratio */
   margin-bottom: 1rem;
 }
@@ -59,12 +59,12 @@
 
 /* If you need to target only the buttons in a specific container, you could do something like this: */
 #page-content-wrapper .btn-primary {
-  margin-bottom: 1rem; /* Adjust as needed */
+  margin-bottom: 1rem; 
 }
 
 /* If the buttons are direct children of a specific container, you can use the child combinator > for direct descendant */
 #page-content-wrapper > .btn-primary {
-  margin-bottom: 1rem; /* Adjust as needed */
+  margin-bottom: 1rem;
 }
 /* Styling for the save image and lucky buttons */
 .App-header .SearchEngine-button {
@@ -83,9 +83,7 @@
 }
 
 /* Existing input styles */
-.SearchEngine-input {
-  /* ... */
-}
+
 
 /* Media query adjustments for responsiveness */
 @media (max-width: 768px) {
@@ -115,12 +113,10 @@
   margin-bottom: 1rem;
 }
 
-/* You can apply this style directly to the image element */
+
 .fetched-image {
   max-width: 100%; /* Limits the width to the parent container's width */
   max-height: 80vh; /* Limits the image height to 80% of the viewport height */
   object-fit: contain; /* Ensures the image is scaled properly */
 }
 
-
-/* Add any additional styling as needed */
